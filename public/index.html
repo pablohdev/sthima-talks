@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sthima Chat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main  class="wrapper">
+
+     <div id="entrar">
+        <img src="images/logo-talk.svg" alt="logo sthima" class="logo">
+        <div class="input-container">
+            <input type="text" name="name-user" id="name-user" placeholder="Your name?">
+        </div>
+        <button class="btn" onClick="JoinChat()">join the chat</button>
+     </div>
+
+     <div id="chat">
+        <div id="users-chat">
+            <h3>Usuários online</h3>
+            <ul id="list-users">
+            </ul>
+        </div>
+        <div id="message-chat">
+            <div id="list-messages">
+            </div>
+            <div id="text-messages">
+                <textarea name="send-messages-text" id="send-messages-text" cols="30" rows="3"></textarea>
+                <button class="btn" onClick="sendMessage()">Send</button>
+            </div>
+        </div>
+     </div>
+
+    </main>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@3.1.1/dist/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    
+    <script src="util.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
