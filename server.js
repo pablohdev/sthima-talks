@@ -10,26 +10,35 @@ app.set('view', path.join(__dirname, 'public'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-app.use('/', (req, res) => {
+app.use('/', (_, res) => {
     res.render('index.html');
 })
 
-
+const usersActive = []
 
 io.on('connection', socket => {
-
     
     const user = {
         id: socket.id,
         name: socket.handshake.query.name
     }
-    socket.broadcast.emit('userSignIn', user)
 
+    socket.broadcast.emit('userSignIn', user)
+    usersActive.push(user)
+    socket.emit('UsersActive', usersActive);
 
     socket.on('sendMessage', data => {
-        console.log('message', data)
         socket.broadcast.emit('receivedMessage', data)
     })
+
+    socket.on("disconnect", () => {
+        const findIndex = usersActive.findIndex(item => item.id === user.id)
+        socket.broadcast.emit('userLogout', user)
+
+        if(findIndex){
+            usersActive.splice(findIndex, 1)
+        }
+    });
 })
 
 

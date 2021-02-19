@@ -3,7 +3,6 @@
       position: {x:'left',y:'bottom'}
    });
 
-
    function JoinChat(){
 
       const nameUser = document.querySelector('#name-user').value
@@ -21,8 +20,7 @@
       startChat(nameUser)
    }
 
-
-   function addUserList(obj){
+   function addUserList(obj, notify = true){
 
       const {id, name} = obj;
 
@@ -32,8 +30,10 @@
 
 
       document.querySelector('#list-users').appendChild(element)
-
-      notyf.success(`<b>${name}</b> acabou de entrar`)
+      
+      if(notify){
+         notyf.success(`<b>${name}</b> acabou de entrar`)
+      }
 
    }
 
@@ -59,7 +59,6 @@
       document.querySelector('#list-messages').appendChild(element)
 
    }
-
 
    document.querySelector('#send-messages-text').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') {

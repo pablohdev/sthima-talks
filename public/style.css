@@ -99,7 +99,7 @@ textarea:focus, input:focus{
 
 #chat #message-chat #list-messages{
     flex:10;
-    overflow: auto;
+    overflow: auto;   
 }
 
 #chat #message-chat #text-messages{
@@ -108,16 +108,25 @@ textarea:focus, input:focus{
 
     display:flex;
     justify-content: space-between;
+    border-radius: 20px;
 }
 
 #chat #message-chat #text-messages textarea{
     flex:6;
-    border: 1px solid #CDCDCD
+    border: none;
+    max-height:60px;
+    resize: none;
+    border-radius: 20px;
+    padding: 5px 10px;
 }
 
 
 #chat #message-chat #text-messages button{
     flex:1;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-top: 0;
 }
 
 
